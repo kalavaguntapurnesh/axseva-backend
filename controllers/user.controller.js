@@ -16,8 +16,8 @@ exports.registerUser = async (req, res) => {
       // },
       name: "hostgator",
       host: "gator3008.hostgator.com",
-      port: 587,
-      // secure: true,
+      port: 465,
+      secure: true,
       auth: {
         user: "syndrome-noreply@clouddatanetworks.com",
         pass: "CDN@Syndeo@",
@@ -343,7 +343,7 @@ a[x-apple-data-detectors],
     };
     transporter.sendMail(mailOptions, function (error, info) {
       if (error) {
-        return res.json({ status: false, message: "Error in sending mail" });
+        res.status(500).json({ error: "Got Some Errors" });
       } else {
         console.log("This is for the testing purposes");
         return res.status(201).json({ status: true, message: "Email Sent" });
